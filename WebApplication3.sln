@@ -7,10 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiCoreAkkaDemo", "WebAppli
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SignalR", "SignalR", "{6490DB24-75EC-413F-BFB5-D06D6AA4DDFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfHosted_Api", "SelfHosted_Api\SelfHosted_Api.csproj", "{D57AAF67-39E0-49F3-8651-389BD50CA4E0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{4968E1B1-1924-4241-A967-CDBC4A67C5E9}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,21 +17,9 @@ Global
 		{B8EDD043-6EBF-4861-BD13-C62CD86885C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8EDD043-6EBF-4861-BD13-C62CD86885C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8EDD043-6EBF-4861-BD13-C62CD86885C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D57AAF67-39E0-49F3-8651-389BD50CA4E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D57AAF67-39E0-49F3-8651-389BD50CA4E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D57AAF67-39E0-49F3-8651-389BD50CA4E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D57AAF67-39E0-49F3-8651-389BD50CA4E0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4968E1B1-1924-4241-A967-CDBC4A67C5E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4968E1B1-1924-4241-A967-CDBC4A67C5E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4968E1B1-1924-4241-A967-CDBC4A67C5E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4968E1B1-1924-4241-A967-CDBC4A67C5E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{D57AAF67-39E0-49F3-8651-389BD50CA4E0} = {6490DB24-75EC-413F-BFB5-D06D6AA4DDFC}
-		{4968E1B1-1924-4241-A967-CDBC4A67C5E9} = {6490DB24-75EC-413F-BFB5-D06D6AA4DDFC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AC3F3CFD-6445-440E-9D9F-AFF1A04FF554}
