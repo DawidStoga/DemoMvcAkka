@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Akka.Configuration;
 
-namespace WebApplication3
+namespace ApiDemo
 {
     public class ConfigurationLoader
     {

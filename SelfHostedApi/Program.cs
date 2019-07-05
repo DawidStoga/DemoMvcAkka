@@ -7,17 +7,22 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-namespace ApiDemo
+
+namespace SelfHostedApi
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            var hostBuilder = new WebHostBuilder()
+                       .UseKestrel() //tiny web server. It can be replaced with any web server  
+                       .UseStartup<Startup>()
+                       .Build();
+
+            hostBuilder.Run();
+
+            Console.ReadKey();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
     }
 }

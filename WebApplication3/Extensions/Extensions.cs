@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Akka.Actor;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace WebApplication3.Extensions
+namespace ApiDemo.Extensions
 {
     public static class Extensions
     {

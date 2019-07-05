@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Akka.Actor;
-using Bookstore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,12 +12,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
-using WebApplication3.Akka;
-using WebApplication3.DAL;
-using WebApplication3.Extensions;
+using ApiDemo.Akka;
+using ApiDemo.Extensions;
+using ApiDemo.Models;
+using ApiDemo.ActorProviders;
+using AutoMapper;
 
-
-namespace WebApplication3
+namespace ApiDemo
 {
     public class Startup
     {
@@ -37,13 +37,13 @@ namespace WebApplication3
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddDbContext<BooksContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("BooksDb")));
+            services.AddDbContext<CompanyContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("CompanyDb")));
 
             services.AddSingleton(provider =>
             {
                 var serviceScopeFactory = provider.GetService<IServiceScopeFactory>();
-                var actorSystem = ActorSystem.Create("bookstore", ConfigurationLoader.Load());
+                var actorSystem = ActorSystem.Create("ApiActorSystem", ConfigurationLoader.Load());
 
                 actorSystem.AddServiceScopeFactory(serviceScopeFactory);
                 return actorSystem;
@@ -51,14 +51,19 @@ namespace WebApplication3
             }
            );
 
-            services.AddSingleton<BooksManagerActorProvider>(provider =>
+            //No !!!!
+            // services.AddScoped<IInternalActor,PersonManagerActor>();
+            //ActorOf<.. returns IActionRef !!
+           /* you cannot register your actors in IoC container as they are of the same type.*/
+            services.AddSingleton<PersonsManagerActorProvider>(provider =>
             {
                 var actorSystem = provider.GetService<ActorSystem>();
-                var booksManagerActor = actorSystem.ActorOf(Props.Create(() => new BookManagerActor()));
-                return () => booksManagerActor;
+                var PersonsManagerActor = actorSystem.ActorOf(Props.Create(() => new PersonManagerActor()));
+                return () => PersonsManagerActor;
             });
 
-
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+   
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddSwaggerGen(c =>

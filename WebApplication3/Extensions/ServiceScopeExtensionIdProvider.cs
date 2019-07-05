@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Akka.Actor;
 
-namespace WebApplication3.Extensions
+namespace ApiDemo.Extensions
 {
     public class ServiceScopeExtensionIdProvider : ExtensionIdProvider<ServiceScopeExtension>
     {
